@@ -109,10 +109,7 @@ class Invetory extends React.Component {
   openPopupbox = () => {
     const content = (
       <div>
-        <p className="quotes">Work like you don't need the money.</p>
-        <p className="quotes">Dance like no one is watching.</p>
-        <p className="quotes">And love like you've never been hurt.</p>
-        <span className="quotes-from">― Mark Twain</span>
+        {this.renderLogin()}
       </div>
     )
     PopupboxManager.open({ content })
@@ -124,7 +121,13 @@ class Invetory extends React.Component {
     const logout = <button onClick={this.logout}>Log Out!</button>;
     // check if they are no logged in at all
     if(!this.state.uid) {
-      return <div>{this.renderLogin()}</div>
+      return (
+        <div>
+        <button onClick={this.openPopupbox}>Log in</button>
+        <PopupboxContainer />
+          
+        </div>
+    )
     }
     // Check if they are the owner of the current store
     if(this.state.uid !== this.state.owner) {
@@ -140,9 +143,6 @@ class Invetory extends React.Component {
       <div>
         {logout}
         <h2>Invetory</h2>
-          
-         <button onClick={this.openPopupbox}>Click me</button>
-          <PopupboxContainer />
 
         {Object.keys(this.props.fishes).map(this.updateFishesForm)}
 
