@@ -1,3 +1,6 @@
+// I made a typo, it should've been Inventory but I realized
+// too late and I just rolled with it
+
 import React from 'react';
 import AddFishForm from './AddFishForm';
 import base from '../base';
